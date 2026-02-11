@@ -1,11 +1,12 @@
 # devshayan
 
-Personal portfolio / resume website built with **PHP (MVC + OOP)** + **Tailwind CSS v4** + **Vanilla JS**.
+Personal portfolio + blog built with **PHP (MVC + OOP)**, **Tailwind CSS v4**, and **Vanilla JS**.
 
 ## Requirements
 - PHP >= 8.1
 - Composer
 - Node.js + npm
+- MySQL (recommended) or SQLite
 
 ## Setup
 ```bash
@@ -13,22 +14,31 @@ composer install
 cp .env.example .env
 npm install
 npm run build:css
-php -S localhost:8000 -t public
-Open: http://localhost:8000
 ```
 
+### Database (MySQL)
+Create a database named `devshayan`, then:
+```bash
+php cli/migrate.php
+php cli/seed.php
+```
+
+### Run
+```bash
+php -S localhost:8000 -t public public/router.php
+```
+Open: http://localhost:8000
+
+## Admin panel
+- Login: `/admin/login`
+- Default users are created by `php cli/seed.php` using `.env`:
+  - `ADMIN_EMAIL` / `ADMIN_PASSWORD`
+  - `EDITOR_EMAIL` / `EDITOR_PASSWORD`
+
 ## Development (watch CSS)
-Run in a separate terminal:
 ```bash
 npm run dev:css
 ```
 
-## Notes about GitHub
-GitHub Pages does not run PHP.
-You can still host the repo on GitHub, but deploy the app to a PHP-capable host (shared hosting/VPS) or platforms that support PHP.
-
-Roadmap
-
-Admin panel to manage all content (profile, skills, experience, projects, uploads)
-
-Content stored in JSON/DB + CRUD in /admin
+## Deployment note
+GitHub Pages does **not** run PHP. Host this project on a PHP-capable server/platform.
