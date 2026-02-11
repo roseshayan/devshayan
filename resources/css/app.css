@@ -1,5 +1,4 @@
 @import "tailwindcss";
-/* فعال‌سازی دارک با data-theme (به جای prefers-color-scheme) */
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 :root {
   color-scheme: light;
@@ -7,7 +6,6 @@
 html[data-theme="dark"] {
   color-scheme: dark;
 }
-/* انیمیشن reveal برای سوئیچر تم (fallback) */
 .theme-splash {
   position: fixed;
   inset: 0;
@@ -29,7 +27,6 @@ html[data-theme="dark"] {
     clip-path: circle(140vmax at var(--x) var(--y));
   }
 }
-/* reveal برای اسکرول */
 .reveal {
   opacity: 0;
   transform: translateY(14px);

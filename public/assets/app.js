@@ -6,25 +6,25 @@
     html.setAttribute("data-theme", t);
     localStorage.setItem("theme", t);
   };
-  const themeBtn = document.getElementById("themeToggle");
-  const themeSplash = (x, y, toTheme, apply) => {
-    const splash = document.createElement("div");
-    splash.className = "theme-splash";
-    splash.dataset.to = toTheme;
-    splash.style.setProperty("--x", x + "px");
-    splash.style.setProperty("--y", y + "px");
-    document.body.appendChild(splash);
-    splash.addEventListener(
+  const btn = document.getElementById("themeToggle");
+  const splash = (x, y, to, apply) => {
+    const d = document.createElement("div");
+    d.className = "theme-splash";
+    d.dataset.to = to;
+    d.style.setProperty("--x", x + "px");
+    d.style.setProperty("--y", y + "px");
+    document.body.appendChild(d);
+    d.addEventListener(
       "animationend",
       () => {
         apply();
-        splash.remove();
+        d.remove();
       },
       { once: true }
     );
   };
-  if (themeBtn) {
-    themeBtn.addEventListener("click", (ev) => {
+  if (btn) {
+    btn.addEventListener("click", (ev) => {
       const next = getTheme() === "dark" ? "light" : "dark";
       const x = ev.clientX || innerWidth / 2;
       const y = ev.clientY || 72;
@@ -47,14 +47,14 @@
             }
           );
         });
-      } else themeSplash(x, y, next, apply);
+      } else splash(x, y, next, apply);
     });
   }
   const reveals = document.querySelectorAll(".reveal");
   if (reveals.length) {
     const io = new IntersectionObserver(
-      (entries) =>
-        entries.forEach(
+      (es) =>
+        es.forEach(
           (e) =>
             e.isIntersecting &&
             (e.target.classList.add("on"), io.unobserve(e.target))
@@ -73,8 +73,8 @@
       bar.style.width = Math.max(0, Math.min(100, val)) + "%";
     };
     const io = new IntersectionObserver(
-      (entries) =>
-        entries.forEach(
+      (es) =>
+        es.forEach(
           (e) => e.isIntersecting && (run(e.target), io.unobserve(e.target))
         ),
       { threshold: 0.35 }
