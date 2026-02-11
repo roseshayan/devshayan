@@ -1,0 +1,14 @@
+{
+  "name": "devshayan",
+  "version": "1.0.0",
+  "private": true,
+  "type": "commonjs",
+  "scripts": {
+    "dev:css": "npx @tailwindcss/cli -i ./resources/css/app.css -o ./public/assets/app.css --watch",
+    "build:css": "npx @tailwindcss/cli -i ./resources/css/app.css -o ./public/assets/app.css --minify"
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.1.18",
+    "tailwindcss": "^4.1.18"
+  }
+}
