@@ -12,6 +12,7 @@ final class Application
         try {
             $this->router->dispatch();
         } catch (\Throwable $e) {
+            error_log((string)$e);
             http_response_code(500);
             echo '500 | Server Error';
         }

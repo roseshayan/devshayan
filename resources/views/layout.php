@@ -1,10 +1,5 @@
 <?php
-
 declare(strict_types=1);
-function e(mixed $v): string
-{
-    return htmlspecialchars((string)$v, ENT_QUOTES, 'UTF-8');
-}
 ?>
 <!doctype html>
 <html lang="fa" dir="rtl">

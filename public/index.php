@@ -3,6 +3,8 @@
 declare(strict_types=1);
 require dirname(__DIR__) . '/vendor/autoload.php';
 
+require dirname(__DIR__).'/app/Core/helpers.php';
+
 use App\Core\Application;
 use App\Core\Router;
 use App\Controllers\HomeController;
